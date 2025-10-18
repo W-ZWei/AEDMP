@@ -1,0 +1,29 @@
+wt:
+    "0. Startup":
+        type: "Startup"
+        parameters:
+            startup_ids: ["control", "multimedia"]
+    "1. Diagnostics":
+        type: "Diagnostics"
+    "2. Logs":
+        type: "Logs"
+    "3. General Info":
+        type: "General Info"
+    # Segfaults if loaded
+    #"Installed Software":
+        #type: "Installed Software"
+    #"4. Demo sections":
+        #type: "Commands"
+        #parameters:
+            #buttons:
+                #- name: "No Nav Safety"
+                  #system: "rostopic pub -1 /speed_limit/disable/goal speed_limit/DisableActionGoal  \"{header: {seq: 2, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, goal_id:{stamp: {secs: 0, nsecs: 0}, id: ''}, goal: {duration: 5.0}}\""
+                #- name: "Bow"
+                  #system: "rostopic pub -1 /motion_manager/goal pal_control_msgs/MotionManagerActionGoal \"{header: {seq: 2, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, goal_id:{stamp: {secs: 0, nsecs: 0}, id: ''}, goal: {filename: 'bow', plan: false, checkSafety: false, repeat: false, priority: 50, queueTimeout: 0}}\""
+                #- name: "Shake"
+                  #system: "rostopic pub -1 /motion_manager/goal pal_control_msgs/MotionManagerActionGoal \"{header: {seq: 2, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, goal_id:{stamp: {secs: 0, nsecs: 0}, id: ''}, goal: {filename: 'shake_right', plan: false, checkSafety: false, repeat: false, priority: 50, queueTimeout: 0}}\""
+                #- name: "Wave"
+                  #system: "rostopic pub -1 /motion_manager/goal pal_control_msgs/MotionManagerActionGoal \"{header: {seq: 2, stamp: {secs: 0, nsecs: 0}, frame_id: ''}, goal_id:{stamp: {secs: 0, nsecs: 0}, id: ''}, goal: {filename: 'wave', plan: false, checkSafety: false, repeat: false, priority: 50, queueTimeout: 0}}\""
+    #S1:
+        #- name: "Publish success"
+          #system: "rostopic pub /test std_msgs/String success -1"

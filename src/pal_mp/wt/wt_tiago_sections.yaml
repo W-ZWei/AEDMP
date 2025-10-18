@@ -1,0 +1,105 @@
+wt:
+    "0. Startup Extras":
+        type: "Startup"
+        parameters:
+            startup_ids: ["startup_extras"]
+    "4. Video":
+        type: "Video"
+        parameters:
+            topic: "/xtion/rgb/image_raw/compressed"
+    "5. Speech":
+        type: "Commands"
+        parameters:
+            buttons:
+                - name: "hi1"
+                  say:
+                        text: "Hello, my name is TIAGo, what is your name?"
+                        lang: "en_GB"
+                - name: "hi2"
+                  say:
+                        text: "I am TIAGo, the robot that adapts to your research needs, not the other way around"
+                        lang: "en_GB"
+                - name: "hi nice name"
+                  say:
+                        text: "Oh, what a wonderful name"
+                        lang: "en_GB"
+                - name: "iam"
+                  say:
+                        text: "I am from Barcelona. Where are you from?"
+                        lang: "en_GB"
+                - name: "iam nice place"
+                  say:
+                        text: "Oh, nice place"
+                        lang: "en_GB"
+                - name: "pic1"
+                  say:
+                        text: "Why don't we take a picture all together?"
+                        lang: "en_GB"
+                - name: "pic2"
+                  say:
+                        text: "Let's take a selfie"
+                        lang: "en_GB"
+                - name: "pic3"
+                  say:
+                        text: "What a nice smartphone! I would like to have one of those"
+                        lang: "en_GB"
+                - name: "pic4"
+                  say:
+                        text: "Say cheese!"
+                        lang: "en_GB"
+                - name: "pic5"
+                  say:
+                        text: "Can I see the picture?"
+                        lang: "en_GB"
+                - name: "thank you"
+                  say:
+                        text: "Very well, thank you"
+                        lang: "en_GB"
+                - name: "its amazing"
+                  say:
+                        text: "It is really amazing to see such good looking people around"
+                        lang: "en_GB"
+                - name: "its amazing"
+                  say:
+                        text: "It is a pleasure to be here with all of you"
+                        lang: "en_GB"
+    "53. Commands":
+        type: "Commands"
+        parameters:
+            buttons:
+                - name: "Reload Demo Buttons"
+                  remote_shell: 
+                    cmd: "rosrun pal_wt_demo_buttons demo_buttons.py"
+                    target: "control"
+                - name: "Get out of collision"
+                  remote_shell: 
+                    cmd: "rosservice call /get_out_of_collision '{}'"
+                    target: "control"
+                - name: "Default controllers"
+                  remote_shell: 
+                    cmd: "rostopic pub -1  /change_controllers/goal  change_controllers/SwitchActionGoal \"{header: {}, goal_id: {}, goal: {start_controllers: ['torso_controller', 'arm_controller', 'head_controller'], stop_controllers: [], switch_controllers: True, load: False, unload: False }}\""
+                    target: "control"
+    "6. Settings":
+        type: "Settings"
+        parameters:
+            disable_buttons:
+                - name: "Speed limit"
+                  namespace: "/speed_limit/speed_limit"
+    "7. Movements":
+        type: "Movements"
+        parameters:
+            goal_type: "play_motion"
+    "8. Control Joint":
+        type: "JointCommander"
+        parameters:
+         - name: Arm
+           command_topic: /arm_controller/safe_command
+           joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
+         - name: Torso
+           command_topic: /torso_controller/safe_command
+           joints: [torso_lift_joint]
+         - name: Head
+           command_topic: /head_controller/command
+           joints: [head_1_joint, head_2_joint]
+    "9. Networking":
+        type: "NetworkingEmbedded"

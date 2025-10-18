@@ -1,0 +1,13 @@
+wt:
+  51. Robot Demos:
+    parameters:
+      buttons:
+      - empty_action: {name: gravity_compensation}
+        name: Gravity Compensation
+      - empty_action: {name: self_presentation}
+        name: Self Presentation
+      - empty_action: {name: alive_demo}
+        name: Alive
+      - empty_action: {name: move_base_with_arm_demo}
+        name: Follow by Hand
+    type: Commands

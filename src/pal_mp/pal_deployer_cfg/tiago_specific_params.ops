@@ -1,0 +1,37 @@
+var string wheel_type_ = "nadia"
+var bool has_arm_ = bool(true)
+var string wrist_type_ = "wrist_2010"
+var string end_effector_type_ = "pal-hey5"
+var string ft_type_ = "schunk-ft"
+var strings dummies_ = strings()
+
+export string wheel_type()
+{
+  return wheel_type_;
+}
+
+export bool has_arm()
+{
+  return has_arm_;
+}
+
+export string wrist_type()
+{
+  return wrist_type_;
+}
+
+export string end_effector_type()
+{
+  return end_effector_type_;
+}
+
+export string ft_type()
+{
+  return ft_type_;
+}
+
+export strings dummies()
+{
+  return dummies_;
+}
+

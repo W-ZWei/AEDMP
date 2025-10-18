@@ -1,0 +1,3 @@
+tts:
+    audio_config:
+        device: hw:0,0

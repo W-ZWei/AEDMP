@@ -1,0 +1,98 @@
+# Independent settings for the local costmap
+local_costmap:
+  global_frame    : odom
+  robot_base_frame: base_footprint
+  transform_tolerance: 0.2
+
+  update_frequency : 10.0
+  publish_frequency: 10.0
+
+  rolling_window: true
+  width         : 4.0
+  height        : 4.0
+  resolution    : 0.025
+
+  robot_radius: 0.275
+
+  #plugins are loaded in a separate yaml file
+
+
+  obstacle_laser_layer:
+    enabled: true
+    observation_sources: base_scan
+    combination_method: 0 # can erase static layer
+
+    base_scan:
+      sensor_frame: base_laser_link
+      data_type: LaserScan
+      topic: scan
+      expected_update_rate: 0.3
+      observation_persistence: 1.0
+      inf_is_valid: true
+      marking: true
+      clearing: true
+      raytrace_range: 4.0
+      obstacle_range: 3.0
+
+  obstacle_sonar_layer:
+    enabled: false
+    ns: ""
+    topics: ["/sonar_base"]
+    no_readings_timeout: 0.0
+    clear_threshold: 0.20
+    mark_threshold: 0.80
+    clear_on_max_reading: true
+
+  ramp_layer:
+    enabled : true
+    fill_polygons: true
+    enable_invert: true
+
+  obstacle_vo_layer:
+    enabled: true
+    observation_sources: vo_cloud
+    combination_method: 1
+
+    vo_cloud:
+      sensor_frame: base_link
+      data_type: PointCloud
+      topic: vo_cloud
+      expected_update_rate: 12.0
+      observation_persistence: 0.0
+      marking: true
+      clearing: false
+      raytrace_range: 1.0
+      obstacle_range: 15.0
+
+  obstacle_rgbd_layer:
+    enabled: true
+    observation_sources: rgbd_scan
+    combination_method: 1
+
+    rgbd_scan:
+      sensor_frame: rgbd_laser_link
+      data_type: LaserScan
+      topic: rgbd_scan
+      expected_update_rate: 0.5
+      observation_persistence: 0.0
+      inf_is_valid: true
+      marking: true
+      clearing: true
+      raytrace_range: 2.9
+      obstacle_range: 2.8
+      blanking_range: 1.55
+      mark_blanking: true
+      debug: false
+
+  csce_domestic_social_layer:
+    enabled: true
+    cutoff: 240
+    amplitude: 254
+    covariance: 1.3
+    factor: 5
+    keep_time: 0.75
+
+  inflation_layer:
+    enabled            : false # not used for pal_local_planner
+    inflation_radius   : 0.55
+    cost_scaling_factor: 25.0
